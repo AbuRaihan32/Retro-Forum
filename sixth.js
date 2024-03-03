@@ -3,9 +3,49 @@ const getData = async () => {
     const data = await res.json();
     const dataArray = data.posts;
 
-    console.log(dataArray)
+    displayData(dataArray)
 };
 
+const displayData = (dataArray) => {
+    const postContainer = document.getElementById('post-container');
+    dataArray.forEach(item => {
+        const div = document.createElement('div');
+        div.classList = `bg-[#797DFC1A] p-5 text-center lg:text-start lg:p-10 lg:flex lg:gap-6 rounded-3xl`;
+
+        div.innerHTML = `
+        <!-- avatar -->
+        <div class="flex justify-center lg:inline-block">
+            <div id="avatar-div" class="avatar online">
+                <div class="w-24 rounded-full">
+                    <img src="${item.image}"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <span># <span>${item.category}</span> &#160 &#160 &#160 </span>
+            <span>Author : ${item.author.name}</span>
+            <h1 class="text-xl font-bold">${item.title}</h1>
+            <p class="lg:pr-28 pb-4 border-b-[3px] border-dashed mb-5">${item.description}</p>
+
+            <!-- vew container -->
+            <div class="flex justify-between">
+                <div class="flex gap-6">
+                    <p><span><i class="fa-regular fa-message"></i> &#160 </span>${item.comment_count}</p>
+
+                    <p><span><i class="fa-regular fa-eye"></i> &#160 </span> ${item.view_count}</p>
+
+                    <p><span><i class="fa-regular fa-clock"></i> &#160 </span> ${item.posted_time} </p>
+                </div>
+                <div>
+                    <button><img src="images/massege.svg" alt=""></button>
+                </div>
+            </div>
+        </div>
+        `
+
+        postContainer.appendChild(div)
+    })
+};
 
 
 getData();
