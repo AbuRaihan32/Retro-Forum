@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sixth-Assignment</title>
 
+
+    <!-- font Awesome -->
+    <script src="https://kit.fontawesome.com/4851bdaa26.js" crossorigin="anonymous"></script>
+
     <!-- DaisyUI & Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,21 +17,143 @@
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 
     <!-- row CSS -->
     <style>
-        .mulish{
+        .mulish {
             font-family: "Mulish", sans-serif;
         }
     </style>
 </head>
 
-<body class="mulish">
-    <header>
-        <h1>hello world</h1>
+<body class="border mulish max-w-[1440px] mx-auto">
+    <header class="lg:w-10/12 mx-auto">
+        <!-- start nav here -->
+        <div class="flex  justify-between mb-8 mt-3">
+            <div class="navbar-start">
+                <a class="btn btn-ghost text-xl">ReTro</a>
+            </div>
+            <div class="navbar-center flex">
+                <div class="flex">
+                    <ul class="menu menu-horizontal">
+                        <li title="Home"><i class="fa-solid fa-house"></i></li>
+                        <li title="tooltip"><i class="fa-solid fa-pencil"></i></i></li>
+                        <li title="add"><i class="fa-solid fa-user-plus"></i></li>
+                        <li title="flag"><i class="fa-regular fa-flag"></i></i></li>
+                    </ul>
+                    <div>
+                        <button class="btn">Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end nav here -->
+
+        <!-- start banner here -->
+        <div class="bg-[#12132D] rounded-3xl py-5 px-5 lg:px-[100px] lg:py-[80px]"
+            style="background-image: url(images/bgbanner.png); background-repeat: no-repeat; background-size:cover; background-position:center;">
+            <div class="hero-content flex flex-col lg:flex-row lg:justify-evenly">
+                <div class="w-full text-white text-center lg:text-start">
+                    <h1 class="text-5xl font-semibold">Welcome to the <br class="hidden lg:block"> <span
+                            style="background: -webkit-linear-gradient(#797DFCFF, #797DFC00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ReTro</span>
+                        Forum</h1>
+                    <p class="py-6">Share your favorite opinion and win and wp forum coffee mug!</p>
+                    <div class="relative">
+                        <input class="text-black py-4 px-5 rounded-full w-full" type="text"
+                            placeholder="Search here anything">
+                        <button
+                            class="btn text-white absolute top-1 right-1 py-3 px-5 bg-blue-600 rounded-full">Search</button>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[70%] flex justify-center">
+                    <div class="bg-white w-full lg:w-[70%] p-11 space-y-5 rounded-2xl">
+                        <div class="flex justify-between">
+                            <p>Registered Users</p>
+                            <p>01</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p>Forum</p>
+                            <p>05</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p>Topics</p>
+                            <p>10</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p>10</p>
+                            <p>02</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end banner here -->
     </header>
-    <main>
+    <main class="lg:w-10/12 mx-auto mt-[30px] lg:mt-[80px]">
+        <!-- start Let’s Discuss section -->
+        <section>
+            <div>
+                <h1 class="text-3xl lg:text-4xl text-center">Let’s Discuss</h1>
+                <p class="text-center">Yes, you can run unit tests and view the results directly within the app. The
+                    integrated testing features allow for a streamlined .</p>
+            </div>
+            <div class="mt-5 lg:mt-10 lg:flex gap-5">
+                <!-- post container -->
+                <div id="post-container"  class="lg:w-[60%] space-y-5">
+                    <!-- post card -->
+                    <div class="bg-[#797DFC1A] p-5 text-center lg:text-start lg:p-10 lg:flex lg:gap-6 rounded-3xl">
+                        <!-- avater -->
+                        <div class="flex justify-center lg:inline-block">
+                            <div id="avatar-div" class="avatar online">
+                                <div class="w-24 rounded-full">
+                                    <img src="images/aaa.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span># music &#160 &#160 &#160 </span>
+                            <span>Author : Awlad Hossain</span>
+                            <h1 class="text-xl font-bold">10 Kids Unaware of Their Halloween Costume</h1>
+                            <p class="pb-4 border-b-[3px] border-dashed mb-5">It’s one thing to subject yourself to ha
+                                Halloween
+                                costume mishap because, hey that’s your prerogative</p>
+
+                            <!-- vew container -->
+                            <div class="flex justify-between">
+                                <div class="flex gap-6">
+                                    <p><span><i class="fa-regular fa-message"></i> &#160 </span><span>560</span></p>
+
+                                    <p><span><i class="fa-regular fa-eye"></i> &#160 </span> <span> 1,568</span> </p>
+
+                                    <p><span><i class="fa-regular fa-clock"></i> &#160 </span> <span> 5 min</span> </p>
+                                </div>
+
+                                <div>
+                                    <img src="images/massege.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- mark as read container -->
+                <div class="mt-4 lg:mt-0 lg:w-[40%] p-6 bg-[#12132D0D] rounded-3xl">
+                    <div class="flex justify-between">
+                        <p>Title</p>
+                        <p><i class="text-green-500 fa-solid fa-check-double"></i> Mark as read (<span>4</span>)</p>
+                    </div>
+
+                    <div class="flex p-3 bg-white rounded-xl mt-2">
+                        <p class="font-semibold">10 Kids Unaware of Their Halloween Costume</p>
+                        <p><span><i class="fa-regular fa-eye"></i> &#160 </span> <span> 1,568</span> </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- end Let’s Discuss section -->
 
     </main>
     <footer>
