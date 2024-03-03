@@ -8,7 +8,7 @@ const getData = async (inputValue) => {
 
 const displayData = (dataArray) => {
     const postContainer = document.getElementById('post-container');
-    postContainer.innerHTML=``
+    postContainer.innerHTML = ``
     dataArray.forEach(item => {
         const div = document.createElement('div');
         div.classList = `bg-[#797DFC1A] p-5 text-center lg:text-start lg:p-10 lg:flex lg:gap-6 rounded-3xl`;
@@ -38,7 +38,7 @@ const displayData = (dataArray) => {
                     <p><span><i class="fa-regular fa-clock"></i> &#160 </span> ${item.posted_time} &#160 min</p>
                 </div>
                 <div>
-                    <button><img src="images/massege.svg" alt=""></button>
+                    <button onclick="clickForMark()"><img src="images/massege.svg" alt=""></button>
                 </div>
             </div>
         </div>
@@ -49,10 +49,19 @@ const displayData = (dataArray) => {
 };
 
 
-const clickHandler = () =>{
+const clickHandler = () => {
     const inputValue = document.getElementById('inputField').value;
     getData(inputValue)
 }
 
+const clickForMark = () => {
+    const countElement = document.getElementById('current-marked-count');
+    const countText = countElement.innerText;
+    const currentMarkedCount = parseInt(countText);
+    const currentCount = currentMarkedCount + 1;
+    countElement.innerText = currentCount;
+
+    console.log(currentCount)
+}
 
 getData('Comedy');
