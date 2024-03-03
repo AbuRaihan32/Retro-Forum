@@ -1,5 +1,5 @@
-const getData = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+const getData = async (inputValue) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${inputValue}`);
     const data = await res.json();
     const dataArray = data.posts;
 
@@ -8,6 +8,7 @@ const getData = async () => {
 
 const displayData = (dataArray) => {
     const postContainer = document.getElementById('post-container');
+    postContainer.innerHTML=``
     dataArray.forEach(item => {
         const div = document.createElement('div');
         div.classList = `bg-[#797DFC1A] p-5 text-center lg:text-start lg:p-10 lg:flex lg:gap-6 rounded-3xl`;
@@ -34,7 +35,7 @@ const displayData = (dataArray) => {
 
                     <p><span><i class="fa-regular fa-eye"></i> &#160 </span> ${item.view_count}</p>
 
-                    <p><span><i class="fa-regular fa-clock"></i> &#160 </span> ${item.posted_time} </p>
+                    <p><span><i class="fa-regular fa-clock"></i> &#160 </span> ${item.posted_time} &#160 min</p>
                 </div>
                 <div>
                     <button><img src="images/massege.svg" alt=""></button>
@@ -48,4 +49,10 @@ const displayData = (dataArray) => {
 };
 
 
-getData();
+const clickHandler = () =>{
+    const inputValue = document.getElementById('inputField').value;
+    getData(inputValue)
+}
+
+
+getData('Comedy');
