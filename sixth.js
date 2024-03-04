@@ -3,7 +3,7 @@ const getData = async (inputValue) => {
     const data = await res.json();
     const dataArray = data.posts;
 
-    displayData(dataArray)
+    displayData(dataArray);
 };
 
 const displayData = (dataArray) => {
@@ -38,13 +38,12 @@ const displayData = (dataArray) => {
                     <p><span><i class="fa-regular fa-clock"></i> &#160 </span> ${item.posted_time} &#160 min</p>
                 </div>
                 <div>
-                    <button onclick="clickForMark()"><img src="images/massege.svg" alt=""></button>
+                    <button onclick="onclickBtn('${(item.title)}', '${(item.view_count)}')" ><img src="images/massege.svg" alt=""></button>
                 </div>
             </div>
         </div>
         `
-
-        postContainer.appendChild(div)
+        postContainer.appendChild(div);
     })
 };
 
@@ -54,14 +53,30 @@ const clickHandler = () => {
     getData(inputValue)
 }
 
-const clickForMark = () => {
+const onclickBtn = (title, vewCount)=>{
     const countElement = document.getElementById('current-marked-count');
     const countText = countElement.innerText;
     const currentMarkedCount = parseInt(countText);
     const currentCount = currentMarkedCount + 1;
     countElement.innerText = currentCount;
 
-    console.log(currentCount)
+    const markAsReadContainer = document.getElementById('mark-as-read-container');
+
+    const div = document.createElement('div');
+    div.classList = `flex p-3 bg-white rounded-xl mt-2`;
+    div.innerHTML = `
+        <div class="w-full flex justify-between">
+            <div class="w-[70%]">
+                <p class="font-semibold ">${title}</p>
+            </div>
+            <div class="flex items-center w-[30%] justify-end">
+                <p><i class="fa-regular fa-eye"></i></p>
+                <p>&#160 <span> ${vewCount} </span> </p>
+            </div>
+        </div>
+    `
+    markAsReadContainer.appendChild(div);
 }
+
 
 getData('Comedy');
