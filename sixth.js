@@ -16,7 +16,7 @@ const displayData = (dataArray) => {
         div.innerHTML = `
         <!-- avatar -->
         <div class="flex justify-center lg:inline-block">
-            <div id="avatar-div" class="avatar online">
+            <div class="avatar online offline">
                 <div class="w-24 rounded-full">
                     <img src="${item.image}"/>
                 </div>
@@ -45,6 +45,17 @@ const displayData = (dataArray) => {
         `
         postContainer.appendChild(div);
     })
+    
+    const activeDiv = document.getElementsByClassName('avatar');
+    dataArray.forEach(item=>{
+            // console.log(activeDiv[2])
+            if(!item.isActive){
+                activeDiv[2].classList.remove('offline')
+            }else{
+                activeDiv[2].classList.remove('online')
+            }
+    })
+
 };
 
 
@@ -76,7 +87,43 @@ const onclickBtn = (title, vewCount)=>{
         </div>
     `
     markAsReadContainer.appendChild(div);
+};
+
+const getLatestPost = async () =>{
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const latestPost = await res.json();
+    displayLatestPost(latestPost);
 }
 
+const displayLatestPost = (latestPost) => {
+
+    const latestPostContainer = document.getElementById('latest-Post-Container')
+    latestPost.forEach(post=>{
+        const div = document.createElement('div');
+        div.classList=`card bg-base-100 shadow-xl`
+        div.innerHTML=`
+        <div class="rounded-2xl">
+            <img class="p-7" src="${post.cover_image}" />
+        </div>
+        <div class="card-body">
+            <p><i class="fa-regular fa-calendar-days"></i><span> &#160 ${post.author.posted_date? post.author.posted_date : 'No Posted Date'}</span></p>
+            <h2 class="card-title">${post.title}</h2>
+            <p>${post.description}</p>
+            <div class="flex items-center gap-9 ">
+                <div class="w-[30%]">
+                    <img class="rounded-full" src="${post.profile_image}" alt="">
+                </div>
+
+                <div class="w-full">
+                    <p>${post.author.name? post.author.name : 'No Name'}</p>
+                    <p>${post.author.designation? post.author.designation : 'Unknown'}</p>
+                </div>
+            </div>
+        </div>
+        `
+        latestPostContainer.appendChild(div);
+    })
+}
 
 getData('Comedy');
+getLatestPost();
