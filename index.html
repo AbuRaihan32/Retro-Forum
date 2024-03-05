@@ -29,25 +29,42 @@
 </head>
 
 <body class="border mulish max-w-[1440px] mx-auto">
-    <header class="lg:w-10/12 mx-auto">
+    <header class="w-[95%] lg:w-10/12 mx-auto">
         <!-- start nav here -->
-        <div class="flex  justify-between mb-8 mt-3">
+        <div class="navbar bg-base-100 flex justify-between">
             <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li title="Home"><i class="fa-solid fa-house"></i></li>
+                        <li title="tooltip"><i class="fa-solid fa-pencil"></i></i></li>
+                        <li title="add"><i class="fa-solid fa-user-plus"></i></li>
+                        <li title="flag"><i class="fa-regular fa-flag"></i></i></li>
+                    </ul>
+                </div>
                 <a class="btn btn-ghost text-xl">ReTro</a>
             </div>
             <div class="navbar-center flex">
-                <div class="flex">
+                <div class="flex hidden lg:block">
                     <ul class="menu menu-horizontal">
                         <li title="Home"><i class="fa-solid fa-house"></i></li>
                         <li title="tooltip"><i class="fa-solid fa-pencil"></i></i></li>
                         <li title="add"><i class="fa-solid fa-user-plus"></i></li>
                         <li title="flag"><i class="fa-regular fa-flag"></i></i></li>
                     </ul>
-                    <div>
-                        <button class="btn">Button</button>
-                    </div>
+                </div>
+                <div>
+                    <button class="btn">Button</button>
                 </div>
             </div>
+
         </div>
         <!-- end nav here -->
 
@@ -91,7 +108,7 @@
         </div>
         <!-- end banner here -->
     </header>
-    <main class="lg:w-10/12 mx-auto mt-[30px] lg:mt-[80px]">
+    <main class="w-[95%] lg:w-10/12 mx-auto mt-[30px] lg:mt-[80px]">
         <!-- start Let’s Discuss section -->
         <section>
             <div>
@@ -119,10 +136,10 @@
 
         <!-- start join section -->
         <section class="mt-[30px] lg:mt-[80px]">
-            <div class="hero bg-[#12132D] lg:pl-[80px] lg:py-5 rounded-3xl">
+            <div class="hero bg-[#12132D] lg:pl-[80px] lg:py-5 rounded-3xl ">
                 <div class="hero-content flex-col lg:flex-row-reverse">
-                    <img src="images/joinforum.png" class="max-w-sm rounded-lg shadow-2xl" />
-                    <div class="lg:pr-14 text-white">
+                    <img src="images/joinforum.png" class="rounded-lg shadow-2xl" />
+                    <div class="lg:pr-14 text-white text-center lg:text-start">
                         <h1 class="text-5xl font-bold">Join Our Forum</h1>
                         <p class="py-6">Share your favorite opinion and win and wp forum coffee mug! Yes, you can run
                             unit tests and view the results directly within the app. </p>
@@ -145,8 +162,25 @@
             </div>
         </section>
     </main>
-    <footer>
 
+    <!-- start footer section -->
+    <footer
+        class="mt-[40px] lg:mt-[80px] text-center p-10 lg:px-[100px] py-[100px] bg-base-200 text-base-content rounded">
+        <div class="mb-7">
+            <h1 class="text-3xl font-extrabold">ReTro</h1>
+            <p class="text-[17px]">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                piece <br class="hidden lg:block"> of
+                classical Latin literature from 45 BC</p>
+        </div>
+        <div class="mb-7 flex gap-7 justify-center text-3xl">
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-github"></i>
+        </div>
+        <div class="border-t pt-9">
+            <p>2017, All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script src="sixth.js"></script>
