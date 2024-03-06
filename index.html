@@ -49,7 +49,7 @@
                         <li title="flag"><i class="fa-regular fa-flag"></i></i></li>
                     </ul>
                 </div>
-                <a class="btn btn-ghost text-xl">ReTro</a>
+                <a class="btn btn-ghost text-xl">News Pro</a>
             </div>
             <div class="navbar-center flex">
                 <div class="flex hidden lg:block">
@@ -61,7 +61,7 @@
                     </ul>
                 </div>
                 <div>
-                    <button class="btn">Button</button>
+                    <button class="btn bg-[#797DFC] rounded-full px-8 text-white">Sign In</button>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
             <div class="hero-content flex flex-col lg:flex-row lg:justify-evenly">
                 <div class="w-full text-white text-center lg:text-start">
                     <h1 class="text-5xl font-semibold">Welcome to the <br class="hidden lg:block"> <span
-                            style="background: -webkit-linear-gradient(#797DFCFF, #797DFC00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ReTro</span>
+                            style="background: -webkit-linear-gradient(#797DFCFF, #797DFC00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">News Pro</span>
                         Forum</h1>
                     <p class="py-6">Share your favorite opinion and win and wp forum coffee mug!</p>
                     <div class="relative">
@@ -116,18 +116,25 @@
                 <p class="text-center">Yes, you can run unit tests and view the results directly within the app. The
                     integrated testing features allow for a streamlined .</p>
             </div>
-            <div class="mt-5 lg:mt-10 lg:flex gap-5">
+                    <!-- loading -->
+                <div id="allPostLoading" class="text-center mt-5">
+                    <span class="loading loading-bars loading-lg"></span>
+                    <span class="loading loading-bars loading-lg"></span>
+                    <span class="loading loading-bars loading-lg"></span>
+                </div>
+            <div id="all-post-container" class="mt-5 lg:mt-10 lg:flex gap-5">
                 <!-- post container -->
-                <div id="post-container" class="lg:w-[60%] space-y-5">
+                <div id="post-container" class="lg:w-[60%] space-y-5 bg-[#797DFC1A] p-4 lg:p-8 rounded-3xl">
                 </div>
 
                 <!-- mark as read container -->
                 <div id="mark-as-read-container" class="mt-4 lg:mt-0 lg:w-[40%] p-6 bg-[#12132D0D] rounded-3xl">
                     <div class="flex justify-between">
-                        <p>Title</p>
+                        <p class="text-2xl font-bold">Title</p>
                         <p><i class="text-green-500 fa-solid fa-check-double"></i> Mark as read (<span
                                 id="current-marked-count">0</span>)</p>
                     </div>
+                    <p id="NoPostP" class="text-center mt-3 text-[18px] lg:text-xl font-medium" >No posts have been marked yet.</p>
                 </div>
             </div>
 
@@ -154,7 +161,13 @@
             <h1 class="text-3xl font-bold">Latest Posts</h1>
             <p>Yes, you can run unit tests and view the results directly within the app. The integrated testing features
                 allow for a streamlined .</p>
-
+            
+            <!-- loading -->
+            <div id="latestPostLoading" class="text-center mt-5">
+                <span class="loading loading-bars loading-lg"></span>
+                <span class="loading loading-bars loading-lg"></span>
+                <span class="loading loading-bars loading-lg"></span>
+            </div>
             <!-- latest post container -->
             <div id="latest-Post-Container" class="mt-5 text-start flex gap-6 flex-col lg:flex-row">
                 <div class="card bg-base-100 shadow-xl">

@@ -7,16 +7,23 @@ const getData = async (inputValue) => {
 };
 
 const displayData = (dataArray) => {
+    loading(true);
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = ``
     dataArray.forEach(item => {
+        let active = '';
+        if(item.isActive === true){
+            active = 'online'
+        }else{
+            active = 'offline'
+        }
         const div = document.createElement('div');
         div.classList = `bg-[#797DFC1A] p-5 text-center lg:text-start lg:p-10 lg:flex lg:gap-6 rounded-3xl`;
 
         div.innerHTML = `
         <!-- avatar -->
         <div class="flex justify-center lg:inline-block">
-            <div class="avatar online offline">
+            <div class="avatar ${active}">
                 <div class="w-24 rounded-full">
                     <img src="${item.image}"/>
                 </div>
@@ -44,18 +51,8 @@ const displayData = (dataArray) => {
         </div>
         `
         postContainer.appendChild(div);
+        loading(false);
     })
-    
-    const activeDiv = document.getElementsByClassName('avatar');
-    dataArray.forEach(item=>{
-            // console.log(activeDiv[2])
-            if(!item.isActive){
-                activeDiv[2].classList.remove('offline')
-            }else{
-                activeDiv[2].classList.remove('online')
-            }
-    })
-
 };
 
 
@@ -65,14 +62,18 @@ const clickHandler = () => {
 }
 
 const onclickBtn = (title, vewCount)=>{
+    // hide No Post text
+    const noPostP = document.getElementById('NoPostP');
+    noPostP.classList.add('hidden')
+    // set marked count
     const countElement = document.getElementById('current-marked-count');
     const countText = countElement.innerText;
     const currentMarkedCount = parseInt(countText);
     const currentCount = currentMarkedCount + 1;
     countElement.innerText = currentCount;
 
+    // display marked post
     const markAsReadContainer = document.getElementById('mark-as-read-container');
-
     const div = document.createElement('div');
     div.classList = `flex p-3 bg-white rounded-xl mt-2`;
     div.innerHTML = `
@@ -96,7 +97,7 @@ const getLatestPost = async () =>{
 }
 
 const displayLatestPost = (latestPost) => {
-
+    loading(true);
     const latestPostContainer = document.getElementById('latest-Post-Container')
     latestPost.forEach(post=>{
         const div = document.createElement('div');
@@ -106,7 +107,7 @@ const displayLatestPost = (latestPost) => {
             <img class="p-7" src="${post.cover_image}" />
         </div>
         <div class="card-body">
-            <p><i class="fa-regular fa-calendar-days"></i><span> &#160 ${post.author.posted_date? post.author.posted_date : 'No Posted Date'}</span></p>
+            <p><i class="fa-regular fa-calendar-days"></i><span> &#160 ${post.author.posted_date? post.author.posted_date : 'No Publish Date'}</span></p>
             <h2 class="card-title">${post.title}</h2>
             <p>${post.description}</p>
             <div class="flex items-center gap-9 ">
@@ -122,8 +123,37 @@ const displayLatestPost = (latestPost) => {
         </div>
         `
         latestPostContainer.appendChild(div);
+        loading(false);
     })
 }
 
-getData('Comedy');
+
+const loading = (isLoading) =>{
+    if(isLoading){
+        const loadingAll = document.getElementById('allPostLoading');
+        const loadingLatest = document.getElementById('latestPostLoading');
+        
+        const latestPostContainer = document.getElementById('latest-Post-Container')
+        const allPostContainer = document.getElementById('all-post-container')
+
+        // loadingAll.classList.add('hidden')
+        // loadingLatest.classList.add('hidden')
+        allPostContainer.classList=`hidden mt-5 lg:mt-10 lg:flex gap-5`
+        latestPostContainer.classList.add('hidden')
+    }else{
+        const loadingAll = document.getElementById('allPostLoading');
+        const loadingLatest = document.getElementById('latestPostLoading');
+        
+        const latestPostContainer = document.getElementById('latest-Post-Container')
+        const allPostContainer = document.getElementById('all-post-container')
+
+        loadingAll.classList.add('hidden')
+        loadingLatest.classList.add('hidden')
+        allPostContainer.classList.remove('hidden')
+        latestPostContainer.classList.remove('hidden')
+  
+    }
+};
+
+getData('');
 getLatestPost();
